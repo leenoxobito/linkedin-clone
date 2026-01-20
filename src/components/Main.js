@@ -2,29 +2,29 @@ import styled from "styled-components";
 
 const Main = (props) => {
     return <Container>
-            <ShareBox>Share
+            <ShareBox>
                 <div>
                     <img src="/images/user.svg" alt = "" />
                     <button>Start a post</button>
                 </div>
                 <div>
                     <button>
-                        <img src="/images/photo-icon.svg" alt = "" />
+                        <img src="/images/image-icon.png" alt = "" />
                         <span>Photo</span>
                     </button>
 
                     <button>
-                        <img src="/images/video-icon.svg" alt=""/>
+                        <img src="/images/video-icon.jfif" alt=""/>
                         <span>Video</span>
                     </button>
 
                     <button>
-                        <img src="/images/event-icon.svg" alt=""/>
+                        <img src="/images/event-icon.png" alt=""/>
                         <span>Event</span>
                     </button>
 
                     <button>
-                        <img src="/images/article-icon.svg" alt="" />
+                        <img src="/images/article-icon.jfif" alt="" />
                         <span>Write article</span>
                     </button>
                 </div>
@@ -73,8 +73,8 @@ const ShareBox = styled(CommonCard)`
             align-items: center;
             padding: 8px 16px 0px 16px; 
             img{ 
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
                 border-radius:50%;
                 margin-right: 8px;
 
@@ -97,8 +97,8 @@ const ShareBox = styled(CommonCard)`
 
             button{ 
                 img{ 
-                    width: 18px;
-                    height: 18px;
+                    width: 24px;
+                    height: 24px;
                     margin: 0 4px 0 -2px;
                 }
                 span{
