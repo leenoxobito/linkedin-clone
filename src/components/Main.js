@@ -7,7 +7,7 @@ const Main = (props) => {
                     <img src="/images/user.svg" alt = "" />
                     <button>Start a post</button>
                 </div>
-                <div>
+                <div className="actorTitle">
                     <button>
                         <img src="/images/image-icon.png" alt = "" />
                         <span>Photo</span>
@@ -112,6 +112,7 @@ const ShareBox = styled(CommonCard)`
     background: white;
 
     div { 
+        
         button{
             outline: none;
             color: rgba(0,0,0,0.6);
@@ -136,6 +137,7 @@ const ShareBox = styled(CommonCard)`
                 margin-right: 8px;
 
             }
+            
             button{
                 margin:4px 0;
                 flex-grow:1;
@@ -144,6 +146,7 @@ const ShareBox = styled(CommonCard)`
                 border:1px solid rgba(0,0,0,0.15);
                 background-color: white;
                 text-align: left;
+
             }
         }
         &:nth-child(2){
@@ -230,6 +233,7 @@ const SharedActor = styled.div`
     }
 `;
 
+
 const Description = styled.div`
     padding: 0 16px;
     overflow: hidden;
@@ -292,15 +296,53 @@ const SocialCounts = styled.ul`
         margin-left:auto;
     }
 `;
-
 const SocialActions = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 8px;
+  border-top: 1px solid #e0dfdc;
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #0a66c2;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    span {
+      margin-left: 8px;
+      text-decoration: none;
+      pointer-events: none;
+    }
+
+    &:hover > span {
+      text-decoration: underline;
+    }
+  }
+`;
+
+/*const SocialActions = styled.div`
     align-items: center;
     display:flex;
     justify-content: space-around;
     margin: 0;
     min-height: 40px;
     padding: 4px 8px;
-
+    span{
+        margin-left: 8px;
+        text-decoration: none;
+        pointer-events: none;
+    }
+    &:hover span{
+        text-decoration: underline;
+    }
     button{
         display: inline-flex;  
         align-items: center;
@@ -321,5 +363,5 @@ const SocialActions = styled.div`
             }
         }
     }
-`;
+`;*/
 export default Main;

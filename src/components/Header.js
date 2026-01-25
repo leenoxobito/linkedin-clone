@@ -1,13 +1,23 @@
 import styled from "styled-components";
-
+import { auth } from "../firebase";
+import { setUser } from "../actions";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { signOutAPI } from "../actions";
 const Header = (props) => {
+  const logout = async () => {
+      await auth.signOut();
+    //auth.signOut().then(() => {
+     //props.setUser(null);
+    //});
+  };
   return (
     <Container>
       <Content>
         <Logo>
-          <a href="/home">
+          <Link to="/home">
             <img src="/images/home-logo.svg" alt="" />
-          </a>
+          </Link>
         </Logo>
         <Search>
           <div>
@@ -56,12 +66,18 @@ const Header = (props) => {
 
             <User>
               <a>
+                {
+                  props.user && props.user.photoURL? <img src={props.user.photoURL} alt=""/>
+                  :(
+                
                 <img src="/images/user.svg" alt="" />
-                <span>Me</span>
+                )}
+                <span>Me
                 <img src="/images/down-icon.svg" alt="" />
+                </span>
               </a>
 
-              <SignOut>
+              <SignOut onClick={props.signOut}>
                 <a>Sign Out</a>
               </SignOut>
             </User>
@@ -274,4 +290,16 @@ const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 `;
 
-export default Header;
+/*const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user)),
+});*/
+
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(signOutAPI()),
+});
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Header);  

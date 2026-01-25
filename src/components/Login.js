@@ -1,25 +1,39 @@
 import styled from "styled-components";
 import { connect } from 'react-redux';
+import { signInAPI } from "../actions";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = (props) => {
+  const navigate = useNavigate();
+  console.log("LOGIN>JS -> props.user", props.user);
+  useEffect(() => {
+    if (props.user) {
+      navigate("/home", { replace:true });
+    }
+  }, [props.user]);
+
   return (
     <Container>
       <Nav>
-        <a href="/">
+        <Link to="/">
           <img src="/images/login-logo.svg" alt="" />
-        </a>
+        </Link>
         <div>
           <Join>Join now</Join>
           <SignIn>Sign in</SignIn>
         </div>
       </Nav>
+
       <Section>
         <Hero>
           <h1>Welcome to your professional community</h1>
           <img src="/images/login-hero.svg" alt="" />
         </Hero>
+
         <Form>
-          <Google>
+          <Google onClick={props.signIn}>
             <img src="/images/google.svg" alt="" />
             Sign in with Google
           </Google>
@@ -185,10 +199,16 @@ const Google = styled.button`
 `;
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    user: state.userState.user,
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {}
-};
-export default Login;
+
+const mapDispatchToProps = (dispatch) => ({
+  signIn: () => dispatch(signInAPI()),
+});
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
