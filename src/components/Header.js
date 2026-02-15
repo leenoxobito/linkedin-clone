@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from "styled-components";
 import { auth } from "../firebase";
 import { setUser } from "../actions";

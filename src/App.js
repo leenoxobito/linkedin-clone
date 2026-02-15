@@ -27,7 +27,7 @@ function App(props) {
 
   return () => unsubscribe();
 
-  }, []);
+  }, );
   return (
     <div className="App">
       <Router>
